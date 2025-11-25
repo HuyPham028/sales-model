@@ -1,0 +1,27 @@
+- Dữ liệu từ sales.info()
+Có một số cột mất 1 dòng dữ liệu -> drop
+Column1 chỉ có 2547/34867 dòng -> drop
+
+- Kiểu dữ liệu khoogn đúng
+Date ban đầu là kiểu object -> datetime
+year, customer age, quantity, unit cost, unit price, cost, revenue
+đều là float64, ok. Nhưng year, customer age, và quantity có thể
+chuyển thành int64 sau khi drop
+
+Month object -> category
+
+- Sau khi plot histogram
+cột index chỉ có tác dụng đánh số thứ tự -> drop
+year chỉ tập trung vào 2015 và 2016 -> category
+customer age hơi right-skewed, có thể tạo age-group
+
+cột quantity, hmm, chỉ mua 1 sản phẩm, 2, 3 sản phẩm, có thể xem như là category
+unit cost, unit price, cost, revenue
+  hấu hết right-skewed, khách hàng chủ yếu mua mặt hàng rẻ và trung, ít mua hàng giá cao
+  Có thể là outlier, cần tìm hiểu xem đó là mặt hàng cao cấp hay lỗi nhập liệu
+  hồi quy tuyến tính có thể bị ảnh hưởng
+  dùng log transform
+
+Sau khi xác định outlier của 'unit price', có thể thấy đó là một số sản phẩm như bike racks, touring bike, mountain bike, một số ít vest
+
+Unit price và unit cost có sự tương quan
